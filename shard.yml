@@ -1,0 +1,19 @@
+name: pdf-microservice
+version: 0.1.0
+
+authors:
+  - silasb <silas.baronda@gmail.com>
+
+targets:
+  pdf-microservice:
+    main: src/pdf-microservice.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  wkhtmltopdf-crystal:
+    github: blocknotes/wkhtmltopdf-crystal
+
+crystal: 0.29.0
+
+license: MIT
