@@ -1,0 +1,19 @@
+name: web
+version: 0.1.0
+
+authors:
+  - silasb <silas.baronda@gmail.com>
+
+targets:
+  web:
+    main: src/web.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  halite:
+    github: icyleaf/halite
+
+crystal: 0.29.0
+
+license: MIT
