@@ -1,6 +1,6 @@
 # builder
 
-FROM crystallang/crystal:0.29.0 as builder
+FROM crystallang/crystal:0.29.0 AS builder
 
 RUN apt-get update && \
 		apt-get install -y --no-install-recommends curl
@@ -12,17 +12,17 @@ RUN curl -O -L https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.
 
 WORKDIR /usr/src/pdf-microservice
 ADD . /usr/src/pdf-microservice
-RUN crystal build --release src/pdf-microservice.cr
+RUN shards build --production
 
 # runtime
 
-FROM crystallang/crystal:0.29.0
+FROM crystallang/crystal:0.29.0 AS runner
 WORKDIR /app
 ADD https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.xenial_amd64.deb /tmp
 RUN apt-get update && \
 		apt install -y --no-install-recommends /tmp/wkhtmltox_0.12.5-1.xenial_amd64.deb && \
 		rm -rf wkhtmltox_0.12.5-1.xenial_amd64.deb && \
 		rm -rf /var/lib/apt/lists/* /tmp/*.deb
-COPY --from=builder /usr/src/pdf-microservice/pdf-microservice /app/
+COPY --from=builder /usr/src/pdf-microservice/bin/pdf-microservice /app/
 EXPOSE 3000
 CMD /app/pdf-microservice

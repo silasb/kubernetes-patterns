@@ -1,5 +1,5 @@
 build:
-	crystal build -o web app.cr
+	shards build
 
 run:
 	ag -l | PORT=3001 entr -r crystal run app.cr
