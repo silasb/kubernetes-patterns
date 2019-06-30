@@ -1,3 +1,9 @@
+build:
+	crystal build -o web app.cr
+
+run:
+	ag -l | PORT=3001 entr -r crystal run app.cr
+
 console:
 	docker run -it --rm -v ${PWD}:/app -w /app crystallang/crystal:0.29.0 bash
 
