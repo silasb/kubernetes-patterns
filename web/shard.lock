@@ -6,7 +6,7 @@ shards:
 
   halite:
     github: icyleaf/halite
-    version: 0.10.1
+    version: 0.10.2
 
   kave:
     github: jwoertink/kave

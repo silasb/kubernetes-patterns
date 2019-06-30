@@ -11,6 +11,8 @@ targets:
 dependencies:
   kemal:
     github: kemalcr/kemal
+  kave:
+    github: jwoertink/kave
   halite:
     github: icyleaf/halite
 
